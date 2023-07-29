@@ -23,33 +23,33 @@ kubectl get deployments
 kubectl get daemonset
 kubectl get pods -l app=datadog -o custom-columns=NAME:.metadata.name,NODE:.spec.nodeName
 kubectl exec -ti $(kubectl get pods -l app=datadog -o custom-columns=:metadata.name) -- agent status
-curl -LJO https://github.com/
+curl -LJO https://github.com/AmanJain18/Arcade_Labs_Solutions/blob/main/July_Trivia/yamlscript/1.yaml
 rm -f values.yaml
 mv 1.yaml values.yaml
 diff dd-helm-chart-values/values.yaml dd-helm-chart-values/values-tolerations.yaml
 helm upgrade datadog --set datadog.apiKey=$DD_API_KEY datadog/datadog -f dd-helm-chart-values/values-tolerations.yaml --set agents.image.doNotCheckTag=true --set clusterAgent.image.doNotCheckTag=true
 kubectl exec -ti $(kubectl get pods -l app=datadog -o custom-columns=:.metadata.name --field-selector spec.nodeName=node01) -- agent status
-curl -LJO https://github.com/
+curl -LJO https://github.com/AmanJain18/Arcade_Labs_Solutions/blob/main/July_Trivia/yamlscript/2.yaml
 rm -f values.yaml
 mv 2.yaml values.yaml
 diff dd-helm-chart-values/values-tolerations.yaml dd-helm-chart-values/values-kubelet.yaml
 helm upgrade datadog --set datadog.apiKey=$DD_API_KEY datadog/datadog -f dd-helm-chart-values/values-kubelet.yaml --set agents.image.doNotCheckTag=true --set clusterAgent.image.doNotCheckTag=true
 kubectl exec -ti $(kubectl get pods -l app=datadog -o custom-columns=:.metadata.name --field-selector spec.nodeName=node01) -- agent status
 kubectl exec -ti $(kubectl get pods -l app=datadog -o custom-columns=:.metadata.name) -- agent status
-curl -LJO https://github.com/
+curl -LJO https://github.com/AmanJain18/Arcade_Labs_Solutions/blob/main/July_Trivia/yamlscript/3.yaml
 rm -f values.yaml
 mv 3.yaml values.yaml
 diff -U5 dd-helm-chart-values/values-kubelet.yaml dd-helm-chart-values/values-logs.yaml
 helm upgrade datadog --set datadog.apiKey=$DD_API_KEY datadog/datadog -f dd-helm-chart-values/values-logs.yaml --set agents.image.doNotCheckTag=true --set clusterAgent.image.doNotCheckTag=true
 kubectl exec -ti $(kubectl get pods -l app=datadog -o custom-columns=:.metadata.name) -- agent status
 kubectl exec -ti $(kubectl get pods -l app=datadog -o custom-columns=:.metadata.name) -- agent status
-curl -LJO https://github.com/
+curl -LJO https://github.com/AmanJain18/Arcade_Labs_Solutions/blob/main/July_Trivia/yamlscript/4.yaml
 rm -f values.yaml
 mv 4.yaml values.yaml
 diff -U5 dd-helm-chart-values/values-logs.yaml dd-helm-chart-values/values-apm.yaml
 helm upgrade datadog --set datadog.apiKey=$DD_API_KEY datadog/datadog -f dd-helm-chart-values/values-apm.yaml --set agents.image.doNotCheckTag=true --set clusterAgent.image.doNotCheckTag=true
 kubectl exec -ti $(kubectl get pods -l app=datadog -o custom-columns=:.metadata.name) -- agent status
-curl -LJO https://github.com/
+curl -LJO https://github.com/AmanJain18/Arcade_Labs_Solutions/blob/main/July_Trivia/yamlscript/5.yaml
 rm -f values.yaml
 mv 5.yaml values.yaml
 diff -U4 dd-helm-chart-values/values-apm.yaml dd-helm-chart-values/values-cluster-agent.yaml
