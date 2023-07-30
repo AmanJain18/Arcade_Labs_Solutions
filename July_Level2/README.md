@@ -22,7 +22,7 @@
 3. **GSP063** - Classify Text into Categories with the Natural Language API
    - Lab Status: ✅ WORKING FINE
    - Last Checked: 30-07-2023.
-   - Solution Status: 🔴 Do Manually
+   - Solution Status: UPLOADED
 
 4. **GSP281** - Introduction to SQL for BigQuery and Cloud SQL
    - Lab Status: ✅ WORKING FINE
