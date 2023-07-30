@@ -1,4 +1,4 @@
-# Introduction to APIs in Google
+# Introduction to APIs in Google Cloud
 ### Run in the Cloud Shell
 ```bash
 gcloud services enable fitness.googleapis.com
@@ -18,7 +18,7 @@ ____
 ### Click `Authorize APIs`
 ### Select your `Qwiklabs account` and then click `Continue`
 ### Click `Exchange authorization code for tokens`
-### Now copy the access token
+### Now copy the access token `access_token`
 ____
 ## Run in the Cloud Shell
 ```bash
