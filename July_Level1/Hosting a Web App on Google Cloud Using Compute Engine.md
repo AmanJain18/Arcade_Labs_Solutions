@@ -50,25 +50,31 @@ gcloud compute instances list
 # `Check the progress till task 4`
 ### Run in the cloud Shell 
 ```
-gcloud compute instances stop frontend
-gcloud compute instances stop backend
+gcloud compute instances stop frontend --zone=$ZONE
+gcloud compute instances stop backend --zone=$ZONE
 gcloud compute instance-templates create fancy-fe \
+    --source-instance-zone=$ZONE \
     --source-instance=frontend
 gcloud compute instance-templates create fancy-be \
+    --source-instance-zone=$ZONE \
     --source-instance=backend
 gcloud compute instance-templates list
-gcloud compute instances delete --quiet  backend
+gcloud compute instances delete backend --zone=$ZONE
 gcloud compute instance-groups managed create fancy-fe-mig \
+    --zone=$ZONE \
     --base-instance-name fancy-fe \
     --size 2 \
     --template fancy-fe
 gcloud compute instance-groups managed create fancy-be-mig \
+    --zone=$ZONE \
     --base-instance-name fancy-be \
     --size 2 \
     --template fancy-be
 gcloud compute instance-groups set-named-ports fancy-fe-mig \
+    --zone=$ZONE \
     --named-ports frontend:8080
 gcloud compute instance-groups set-named-ports fancy-be-mig \
+    --zone=$ZONE \
     --named-ports orders:8081,products:8082
 gcloud compute health-checks create http fancy-fe-hc \
     --port 8080 \
@@ -88,9 +94,11 @@ gcloud compute firewall-rules create allow-health-check \
     --source-ranges 130.211.0.0/22,35.191.0.0/16 \
     --network default
 gcloud compute instance-groups managed update fancy-fe-mig \
+    --zone=$ZONE \
     --health-check fancy-fe-hc \
     --initial-delay 300
 gcloud compute instance-groups managed update fancy-be-mig \
+    --zone=$ZONE \
     --health-check fancy-be-hc \
     --initial-delay 300
 ```
@@ -170,12 +178,16 @@ gcloud compute instance-groups managed set-autoscaling \
   --target-load-balancing-utilization 0.60
 gcloud compute backend-services update fancy-fe-frontend \
     --enable-cdn --global
-gcloud compute instances set-machine-type frontend --machine-type custom-4-3840
+gcloud compute instances set-machine-type frontend \
+  --zone=$ZONE \
+  --machine-type e2-small
 gcloud compute instance-templates create fancy-fe-new \
+    --region=$REGION \
     --source-instance=frontend \
     --source-instance-zone=$ZONE
 gcloud compute instance-groups managed rolling-action start-update fancy-fe-mig \
-    --version template=fancy-fe-new
+  --zone=$ZONE \
+  --version template=fancy-fe-new
 cd ~/monolith-to-microservices/react-app/src/pages/Home
 mv index.js.new index.js
 cat ~/monolith-to-microservices/react-app/src/pages/Home/index.js
