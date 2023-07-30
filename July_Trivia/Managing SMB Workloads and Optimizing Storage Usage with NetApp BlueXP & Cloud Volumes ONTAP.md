@@ -2,10 +2,16 @@
 
 ## Run in Cloud Shell
 
+<img src="./yamlscript/img.png"></img>
+
+- eg: us-east1
+```
+export REGION=
+```
+- eg: us-east1-d
 ```
 export ZONE=
 ```
-
 ```
 export PROJECT_ID=$(gcloud config get-value project)
 export serviceAccount="netapp-cloud-manager@"$PROJECT_ID".iam.gserviceaccount.com"
