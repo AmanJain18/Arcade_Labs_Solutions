@@ -1,5 +1,5 @@
 # Introduction to APIs in Google
-## Run in the Cloud Shell
+### Run in the Cloud Shell
 ```bash
 gcloud services enable fitness.googleapis.com
 gcloud services enable storage-api.googleapis.com

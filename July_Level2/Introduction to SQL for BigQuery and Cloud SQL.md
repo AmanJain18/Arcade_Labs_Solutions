@@ -1,5 +1,6 @@
 # Introduction to SQL for BigQuery and Cloud SQL
-## Run in the Cloud Shell
+
+### Run in the Cloud Shell
 ### Get Region from Task 5
 ```bash
 export REGION=
