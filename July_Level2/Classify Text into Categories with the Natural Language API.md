@@ -19,6 +19,8 @@ To create an API key, in your Console, click Navigation menu > APIs & Services >
 
 Click on the SSH button. You be brought to an interactive shell. then copy below command...
 
+========= Run in SSH ============
+
 ```bash
 export API_KEY=
 ```
