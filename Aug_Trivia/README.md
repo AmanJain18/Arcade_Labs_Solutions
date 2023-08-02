@@ -42,7 +42,7 @@
 7. **GSP421** - APIs Explorer: Cloud Storage
    - Lab Status: ✅ WORKING FINE
    - Last Checked: 01-08-2023.
-   - Solution Status: ❌ NOT UPLOADED
+   - Solution Status: NOT UPLOADED
 
 8. **GSP297** - Google Cloud Storage - Bucket Lock
    - Lab Status: ✅ WORKING FINE
