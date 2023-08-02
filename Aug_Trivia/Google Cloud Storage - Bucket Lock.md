@@ -4,6 +4,9 @@
 ```bash
 export BUCKET=$(gcloud config get-value project)
 gsutil mb "gs://$BUCKET"
+```
+---
+```bash
 gsutil retention set 10s "gs://$BUCKET"
 gsutil retention get "gs://$BUCKET"
 gsutil cp gs://spls/gsp297/dummy_transactions "gs://$BUCKET/"
@@ -17,9 +20,7 @@ Enter Y to confirm.
 ---
 ```bash
 gsutil retention temp set "gs://$BUCKET/dummy_transactions"
-gsutil rm "gs://$BUCKET/dummy_transactions"
 gsutil retention temp release "gs://$BUCKET/dummy_transactions"
-gsutil rm "gs://$BUCKET/dummy_transactions"
 ```
 ---
 ```bash
