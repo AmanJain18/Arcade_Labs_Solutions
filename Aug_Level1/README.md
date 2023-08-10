@@ -59,7 +59,7 @@
 - **GSP303** - Configure Secure RDP using a Windows Bastion Host
   - Lab Status: ✅ WORKING FINE.
   - Last Checked: 10-08-2023.
-  - Solution Status: NOT UPLOADED.
+  - Solution Status: UPLOADED.
 ---
 - **GSP306** - Migrate a MySQL Database to Google Cloud SQL
   - Lab Status: ✅ WORKING FINE.

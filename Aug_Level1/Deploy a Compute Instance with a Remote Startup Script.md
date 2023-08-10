@@ -1,6 +1,9 @@
 # Deploy a Compute Instance with a Remote Startup Script
 ## Run in the Cloud Shell...
 
+Open This link in normal window of Chrome after `Starting the lab from Level 1 Only For Check My Progress.`
+[Link](https://www.cloudskillsboost.google/focuses/1735?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=25544818)
+
 ```bash
 export ZONE=
 ```
