@@ -19,6 +19,7 @@ gcloud artifacts repositories create my-repository \
   --location=$REGION
 gcloud container clusters create hello-cloudbuild --num-nodes 1 --region $REGION
 ```
+## `Note:` The Above command will take 5-10 minutes to execute. Make sure your Laptop/PC doesn"t go to `SLEEP.`
 ---
 ```bash
 gcloud source repos create hello-cloudbuild-app
