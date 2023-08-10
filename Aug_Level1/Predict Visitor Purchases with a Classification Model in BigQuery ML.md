@@ -232,7 +232,7 @@ ORDER BY
   predicted_will_buy_on_return_visit DESC;'
 ```
 ---
-## Run Below Command in `BigQuery`
+## Run Below Command in `BigQuery` for 2nd last task then check progress for last both the task.
 ```bash
 #standardSQL
 SELECT
