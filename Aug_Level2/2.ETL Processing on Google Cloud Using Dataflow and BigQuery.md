@@ -19,6 +19,7 @@ sleep 30
 gsutil -m cp -R gs://spls/gsp290/dataflow-python-examples .
 
 export PROJECT=$(gcloud config get-value project)
+gcloud config set project $PROJECT
 
 gsutil mb -c regional -l $REGION  gs://$PROJECT
 
@@ -31,20 +32,16 @@ docker run -it -e PROJECT=$PROJECT -v $(pwd)/dataflow-python-examples:/dataflow 
 ```
 ---
 ## `Now u will be in the root@..... Directory in the Cloud Shell. Now paste all the below command one by one`
+
 ```bash
 pip install apache-beam[gcp]==2.24.0
-
-pip install --upgrade pip
-```
-----
-```bash
 cd dataflow/
 ```
 
 ## export REGION Again:- Given at Task 3.
 
 ```bash
-export REGION=
+export REGION=us-central1
 ```
 ---
 ## `Now Below All command will take 8-10 mins to execute respectively...`
@@ -53,7 +50,6 @@ export REGION=
 python dataflow_python_examples/data_ingestion.py \
   --project=$PROJECT --region=$REGION \
   --runner=DataflowRunner \
-  --machine_type=e2-small \
   --staging_location=gs://$PROJECT/test \
   --temp_location gs://$PROJECT/test \
   --input gs://$PROJECT/data_files/head_usa_names.csv \
@@ -65,7 +61,6 @@ python dataflow_python_examples/data_transformation.py \
   --project=$PROJECT \
   --region=$REGION \
   --runner=DataflowRunner \
-  --machine_type=e2-small \
   --staging_location=gs://$PROJECT/test \
   --temp_location gs://$PROJECT/test \
   --input gs://$PROJECT/data_files/head_usa_names.csv \
@@ -74,12 +69,13 @@ python dataflow_python_examples/data_transformation.py \
 ---
 ```bash
 sed -i "s/values = \[x.decode('utf8') for x in csv_row\]/values = \[x for x in csv_row\]/" ./dataflow_python_examples/data_enrichment.py
+```
 
+```bash
 python dataflow_python_examples/data_enrichment.py \
   --project=$PROJECT \
-  --region=us-central1 \
+  --region=$REGION \
   --runner=DataflowRunner \
-  --machine_type=e2-small \
   --staging_location=gs://$PROJECT/test \
   --temp_location gs://$PROJECT/test \
   --input gs://$PROJECT/data_files/head_usa_names.csv \
@@ -92,7 +88,6 @@ python dataflow_python_examples/data_lake_to_mart.py \
   --max_num_workers=4 \
   --project=$PROJECT \
   --runner=DataflowRunner \
-  --machine_type=e2-small \
   --staging_location=gs://$PROJECT/test \
   --temp_location gs://$PROJECT/test \
   --save_main_session \
