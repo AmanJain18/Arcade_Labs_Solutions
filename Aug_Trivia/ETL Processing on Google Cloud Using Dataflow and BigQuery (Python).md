@@ -1,5 +1,5 @@
 
-# ETL Processing on Google Cloud Using Dataflow and BigQuery
+# ETL Processing on Google Cloud Using Dataflow and BigQuery (Python).
 
 ### Run in the Cloud Shell
 
@@ -28,7 +28,7 @@ gsutil cp gs://spls/gsp290/data_files/head_usa_names.csv gs://$PROJECT/data_file
 
 bq mk lake
 
-docker run -it -e PROJECT=$PROJECT -v $(pwd)/dataflow-python-examples:/dataflow python:3.7 /bin/bash
+docker run -it -e PROJECT=$PROJECT -v $(pwd)/dataflow-python-examples:/dataflow python:3.8 /bin/bash
 ```
 ---
 ## `Now u will be in the root@..... Directory in the Cloud Shell. Now paste all the below command one by one`
