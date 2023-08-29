@@ -20,7 +20,7 @@
    - Lab Status: ✅ WORKING FINE
    - Solution Status: UPLOADED
 ---
-5. **GSP096** - Google Cloud Pub/Sub: Qwik Start - Console
+5. **GSP096** - Google Cloud Pub/Sub: Qwik Start - Command Line
    - Lab Status: ✅ WORKING FINE
    - Solution Status: UPLOADED
 ---
