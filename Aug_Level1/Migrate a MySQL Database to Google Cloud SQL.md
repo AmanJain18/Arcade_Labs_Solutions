@@ -4,8 +4,8 @@
 export ZONE=$(gcloud compute instances list --format="value(zone)" --filter="name=blog")
 gcloud sql instances create wordpress --tier=db-n1-standard-1 --activation-policy=ALWAYS --zone $ZONE
 gcloud sql users set-password --host % root --instance wordpress --password Password1*
-CLOUDHUSTLER=$(gcloud compute instances describe blog --zone=$ZONE --format="get(networkInterfaces[0].accessConfigs[0].natIP)")/32
-gcloud sql instances patch wordpress --authorized-networks $CLOUDHUSTLER --quiet
+INSTANCE=$(gcloud compute instances describe blog --zone=$ZONE --format="get(networkInterfaces[0].accessConfigs[0].natIP)")/32
+gcloud sql instances patch wordpress --authorized-networks $INSTANCE --quiet
 gcloud compute ssh "blog" --zone=$ZONE --project=$DEVSHELL_PROJECT_ID --quiet
 sudo apt-get update
 sudo apt-get install -y mysql-client

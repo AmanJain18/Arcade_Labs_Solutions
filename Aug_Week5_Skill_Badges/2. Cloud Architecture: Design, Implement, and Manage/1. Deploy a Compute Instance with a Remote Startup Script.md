@@ -34,6 +34,6 @@ gcloud compute ssh lab-monitor --zone=$ZONE
 ```bash
 sudo apt update
 sudo apt install apache2
-export CLOUDHUSTLERS=$(curl -s http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip -H "Metadata-Flavor: Google")
-curl http://$CLOUDHUSTLERS
+export LINKS=$(curl -s http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip -H "Metadata-Flavor: Google")
+curl http://$LINKS
 ```
