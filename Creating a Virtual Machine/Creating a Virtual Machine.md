@@ -1,4 +1,4 @@
-# Creating a Virtual Machine || [GSP001](https://www.cloudskillsboost.google/focuses/3563?parent=catalog) ||
+# Creating a Virtual Machine || [GSP001]
 
 ## What this Lab is About
 This lab guides you through the process of creating virtual machines (VMs) using Google Cloud's Compute Engine. You'll learn to deploy VMs running various operating systems, configure a web server, and manage these instances using both the Google Cloud console and the gcloud command line tool.
