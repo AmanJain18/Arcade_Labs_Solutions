@@ -22,21 +22,15 @@ RESET=`tput sgr0`
 
 echo "${BG_GREEN}${BOLD}Starting Execution${RESET}"
 
-gcloud pubsub snapshots create pubsub-snapshot --subscription=gcloud-pubsub-subscription
+export REGION="${ZONE%-*}"
 
-gcloud pubsub lite-reservations create pubsub-lite-reservation \
-  --location=$LOCATION \
-  --throughput-capacity=1
+gcloud config set compute/region $REGION
 
-gcloud pubsub lite-topics create cloud-pubsub-topic-lite \
-  --location=$LOCATION \
-  --partitions=1 \
-  --per-partition-bytes=30GiB \
-  --throughput-reservation=demo-reservation
+gcloud config set compute/zone $ZONE
 
-gcloud pubsub lite-subscriptions create cloud-pubsub-subscription-lite \
-  --location=$LOCATION \
-  --topic=cloud-pubsub-topic-lite
+export PROJECT_ID=$(gcloud config get-value project)
+
+gcloud compute instances create gcelab2 --machine-type e2-medium --zone $ZONE
 
 echo "${BG_BLUE}${BOLD}Congratulations For Completing The Lab !!!${RESET}"
 

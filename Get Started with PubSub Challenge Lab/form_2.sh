@@ -20,7 +20,7 @@ BOLD=`tput bold`
 RESET=`tput sgr0`
 #----------------------------------------------------start--------------------------------------------------#
 
-echo "${YELLOW}${BOLD}Starting${RESET}" "${GREEN}${BOLD}Execution${RESET}"
+echo "${BG_GREEN}${BOLD}Starting Execution${RESET}"
 
 gcloud pubsub schemas create city-temp-schema \
         --type=avro \
@@ -52,6 +52,6 @@ gcloud pubsub topics create temp-topic \
         --message-encoding=JSON \
         --schema=temperature-schema
 
-echo "${RED}${BOLD}Congratulations${RESET}" "${WHITE}${BOLD}for${RESET}" "${GREEN}${BOLD}Completing the Lab !!!${RESET}"
+echo "${BG_BLUE}${BOLD}Congratulations For Completing The Lab !!!${RESET}"
 
 #-----------------------------------------------------end----------------------------------------------------------#

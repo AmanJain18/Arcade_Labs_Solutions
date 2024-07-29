@@ -1,3 +1,6 @@
+#!/bin/bash
+# Define color variables
+
 BLACK=`tput setaf 0`
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
@@ -22,21 +25,21 @@ RESET=`tput sgr0`
 
 echo "${BG_GREEN}${BOLD}Starting Execution${RESET}"
 
-gcloud pubsub snapshots create pubsub-snapshot --subscription=gcloud-pubsub-subscription
+mkdir sql-with-terraform
 
-gcloud pubsub lite-reservations create pubsub-lite-reservation \
-  --location=$LOCATION \
-  --throughput-capacity=1
+cd sql-with-terraform
 
-gcloud pubsub lite-topics create cloud-pubsub-topic-lite \
-  --location=$LOCATION \
-  --partitions=1 \
-  --per-partition-bytes=30GiB \
-  --throughput-reservation=demo-reservation
+gsutil cp -r gs://spls/gsp234/gsp234.zip .
 
-gcloud pubsub lite-subscriptions create cloud-pubsub-subscription-lite \
-  --location=$LOCATION \
-  --topic=cloud-pubsub-topic-lite
+unzip gsp234.zip
+
+cat main.tf
+
+terraform init
+
+terraform plan -out=tfplan
+
+terraform apply tfplan
 
 echo "${BG_BLUE}${BOLD}Congratulations For Completing The Lab !!!${RESET}"
 

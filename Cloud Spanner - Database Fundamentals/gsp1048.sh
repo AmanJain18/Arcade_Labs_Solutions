@@ -1,3 +1,6 @@
+#!/bin/bash
+# Define color variables
+
 BLACK=`tput setaf 0`
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
@@ -22,21 +25,25 @@ RESET=`tput sgr0`
 
 echo "${BG_GREEN}${BOLD}Starting Execution${RESET}"
 
-gcloud pubsub snapshots create pubsub-snapshot --subscription=gcloud-pubsub-subscription
+gcloud spanner instances create banking-instance \
+--config=regional-$REGION  \
+--description="awesome" \
+--nodes=1
 
-gcloud pubsub lite-reservations create pubsub-lite-reservation \
-  --location=$LOCATION \
-  --throughput-capacity=1
+gcloud spanner databases create banking-db --instance=banking-instance
 
-gcloud pubsub lite-topics create cloud-pubsub-topic-lite \
-  --location=$LOCATION \
-  --partitions=1 \
-  --per-partition-bytes=30GiB \
-  --throughput-reservation=demo-reservation
+gcloud spanner instances create banking-instance-2 \
+--config=regional-$REGION  \
+--description="awesome" \
+--nodes=2
 
-gcloud pubsub lite-subscriptions create cloud-pubsub-subscription-lite \
-  --location=$LOCATION \
-  --topic=cloud-pubsub-topic-lite
+gcloud spanner databases create banking-db-2 --instance=banking-instance-2
+
+gcloud spanner databases ddl update banking-db --instance=banking-instance --ddl="CREATE TABLE Customer (
+  CustomerId STRING(36) NOT NULL,
+  Name STRING(MAX) NOT NULL,
+  Location STRING(MAX) NOT NULL,
+) PRIMARY KEY (CustomerId);"
 
 echo "${BG_BLUE}${BOLD}Congratulations For Completing The Lab !!!${RESET}"
 

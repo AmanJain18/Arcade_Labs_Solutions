@@ -20,7 +20,7 @@ BOLD=`tput bold`
 RESET=`tput sgr0`
 #----------------------------------------------------start--------------------------------------------------#
 
-echo "${YELLOW}${BOLD}Starting${RESET}" "${GREEN}${BOLD}Execution${RESET}"
+echo "${BG_GREEN}${BOLD}Starting Execution${RESET}"
 
 export MSG_BODY='Hello World!'
 
@@ -34,6 +34,6 @@ gcloud scheduler jobs create pubsub cron-scheduler-job --schedule="* * * * *" --
 
 gcloud pubsub subscriptions pull cron-job-pubsub-subscription --limit 5
 
-echo "${RED}${BOLD}Congratulations${RESET}" "${WHITE}${BOLD}for${RESET}" "${GREEN}${BOLD}Completing the Lab !!!${RESET}"
+echo "${BG_BLUE}${BOLD}Congratulations For Completing The Lab !!!${RESET}"
 
 #-----------------------------------------------------end----------------------------------------------------------#
