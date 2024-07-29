@@ -20,7 +20,7 @@ BOLD=`tput bold`
 RESET=`tput sgr0`
 #----------------------------------------------------start--------------------------------------------------#
 
-echo "${YELLOW}${BOLD}Starting${RESET}" "${GREEN}${BOLD}Execution${RESET}"
+echo "${BG_GREEN}${BOLD}Starting Execution${RESET}"
 
 bq query --use_legacy_sql=false "
 CREATE FUNCTION \`soccer.GetShotDistanceToGoal\`(x INT64, y INT64)

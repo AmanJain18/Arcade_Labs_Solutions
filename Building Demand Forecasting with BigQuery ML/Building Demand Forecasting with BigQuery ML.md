@@ -27,20 +27,20 @@ GROUP BY
  trip_date
 ```
 
-* Select `SAVE RESULTS` .
+- Select `SAVE RESULTS` .
 
-* In the dropdown menu, select `BigQuery Table`.
+- In the dropdown menu, select `BigQuery Table`.
 
-* For Dataset select `bqmlforecast`.
+- For Dataset select `bqmlforecast`.
 
-* Add a Table name `training_data` .
+- Add a Table name `training_data` .
 
-* Click *EXPORT*.
+- Click _EXPORT_.
 
 ### Run again the following Commands in Cloud Shell
 
 ```bash
-curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Building%20Demand%20Forecasting%20with%20BigQuery%20ML/gsp852-2.sh
+curl -LO raw.githubusercontent.com/AmanJain18/Arcade_Labs_Solutions/main/Building%20Demand%20Forecasting%20with%20BigQuery%20ML/gsp852-2.sh
 
 sudo chmod +x gsp852-2.sh
 
